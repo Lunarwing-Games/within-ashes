@@ -5,7 +5,8 @@
 extern "C" {
 #endif
 
-#define SteamAppID 480
+// The docs specify a uint32 AppID
+#define SteamAppID (uint32_t)480
 
 // Defining the PySteam API macro for visibility
 #if defined(_WIN32) || defined(_WIN64)

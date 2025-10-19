@@ -1,5 +1,6 @@
 #include "pysteam.h"
 #include <stdio.h>
+#include <steam/steam_api.h>
 
 static bool g_SteamReady = false;
 
@@ -39,21 +40,19 @@ PS_API const char *psteam_get_persona(void) {
 
 PS_API bool psteam_grant_ach(const char *ach_id) {
     if (!psteam_is_ready() || !ach_id) return false;
-
-    ISteamUserStats *stats = SteamUserStats();
     bool achieved = false;
-
-    if (!stats->GetAchievement(ach_id, &achieved)) {
-        fprintf(stderr, "[PySteam] Failed to query achievement: %s\n", ach_id);
+    
+    if (!SteamUserStats()->GetAchievement(ach_id, &achieved)) {
+        fprintf(stderr, "[pysteam] Failed to query achievement: %s\n", ach_id);
         return false;
     }
 
     if (!achieved) {
-        stats->SetAchievement(ach_id);
-        stats->StoreStats();
-        fprintf(stdout, "[PySteam] Achievement unlocked: %s\n", ach_id);
+        SteamUserStats()->SetAchievement(ach_id);
+        SteamUserStats()->StoreStats();
+        fprintf(stdout, "[pysteam] Unlocked achievement: %s\n", ach_id);
     } else {
-        fprintf(stdout, "[PySteam] Achievement already unlocked: %s\n", ach_id);
+        fprintf(stdout, "Already unlocked %s\n", ach_id);
     }
 
     return true;
