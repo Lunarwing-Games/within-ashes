@@ -1,6 +1,11 @@
 #ifndef PYSTEAM_H
 #define PYSTEAM_H
 
+// Required includes from the stdlib and Steamworks
+#include <stdbool.h>
+#include <stdint.h>
+#include <steam/steam_api.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -14,11 +19,6 @@ extern "C" {
 #else
   #define PS_API __attribute__((visibility("default")))
 #endif
-
-// Required includes from the stdlib and Steamworks
-#include <stdbool.h>
-#include <stdint.h>
-#include <steam/steam_api.h>
 
 // Initalizes Steam and returns a boolean value for success or failure
 PS_API bool psteam_init(void);

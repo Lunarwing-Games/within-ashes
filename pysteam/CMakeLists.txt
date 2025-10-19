@@ -1,25 +1,31 @@
 # PySteam library CMake file
 # (c) 2025 Lunarwing Games
 #
-
-project(pysteam)
 cmake_minimum_required(VERSION 3.20)
 
-# C99 because it just works everywhere
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_C_EXTENSIONS OFF)
+project(pysteam VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-add_library(pysteam SHARED pysteam.c)
+if(WIN32)
+    set(STEAMWORKS_SDK "C:/steamworks/sdk")
+else()
+    message(ERROR_FATAL "Unimplemented!")
+endif()
+
+add_library(pysteam SHARED pysteam.cpp)
 
 target_include_directories(pysteam
   PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<INSTALL_INTERFACE:include>
+    ${STEAMWORKS_SDK}/public
 )
 
 # versioning and public header
@@ -28,6 +34,23 @@ set_target_properties(pysteam PROPERTIES
   SOVERSION 1
   PUBLIC_HEADER "pysteam.h"
 )
+
+if(WIN32)
+  target_link_directories(pysteam PRIVATE
+    ${STEAMWORKS_SDK}/redistributable_bin
+  )
+  target_link_libraries(pysteam PRIVATE steam_api.lib)
+elseif(APPLE)
+  target_link_directories(pysteam PRIVATE
+    ${STEAMWORKS_SDK}/redistributable_bin/osx
+  )
+  target_link_libraries(pysteam PRIVATE steam_api)
+else() # Linux
+  target_link_directories(pysteam PRIVATE
+    ${STEAMWORKS_SDK}/redistributable_bin/linux64
+  )
+  target_link_libraries(pysteam PRIVATE steam_api)
+endif()
 
 # install rules (library + public header + export)
 install(TARGETS pysteam
