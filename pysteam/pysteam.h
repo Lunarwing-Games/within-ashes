@@ -5,6 +5,8 @@
 extern "C" {
 #endif
 
+#define SteamAppID 480
+
 // Defining the PySteam API macro for visibility
 #if defined(_WIN32) || defined(_WIN64)
   #define PS_API __declspec(dllexport)
