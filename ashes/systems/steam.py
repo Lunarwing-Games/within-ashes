@@ -3,16 +3,17 @@
 # semi-enforced, keeping them inline with C
 
 import ctypes
-import sys
+import sys, os
 
 class SteamInterface:
     def __init__(self):
+        self.__cwd = os.path.dirname(os.path.abspath(sys.argv[0]))
         if sys.platform == "win32":
-            self.steamlib = ctypes.cdll.LoadLibrary("pysteam.dll")
+            self.steamlib = ctypes.cdll.LoadLibrary(f"{self.__cwd}/pysteam.dll")
         elif sys.platform == "darwin":
-            self.steamlib = ctypes.cdll.LoadLibrary("libpysteam.dylib")
+            self.steamlib = ctypes.cdll.LoadLibrary(f"{self.__cwd}/libpysteam.dylib")
         else:
-            self.steamlib = ctypes.cdll.LoadLibrary("libpysteam.so")
+            self.steamlib = ctypes.cdll.LoadLibrary(f"{self.__cwd}/ibpysteam.so")
         
         self.steamlib.psteam_init()
     

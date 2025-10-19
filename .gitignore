@@ -1,2 +1,10 @@
 .vscode/
+ashes/__pycache__
+ashes/systems/__pycache__
 pysteam/build
+
+.dll
+.pdb
+.exp
+.exe
+.ilk

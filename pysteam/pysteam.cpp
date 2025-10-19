@@ -1,4 +1,4 @@
-#include "pysteam.h"
+#include "pysteam.hpp"
 #include <stdio.h>
 #include <steam/steam_api.h>
 

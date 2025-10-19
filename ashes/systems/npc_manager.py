@@ -1,5 +1,5 @@
-from hostile_npc import *
-from passive_npc import *
+from .hostile_npc import *
+from .passive_npc import *
 import pygame
 
 # The NPC Manager does exactly that, manages all the NPCs from a central class.
