@@ -10,7 +10,7 @@ You can choose where to survive, when the game first starts. Some areas are hard
 
 Python is performant, if done properly. This game is by no means of massive scale, and is in no way graphically intensive. Python also allows for extremely rapid development and iteration, our only downtime comes when building executables via `pyinstaller`. While C++ and other languages were considered for the full game, Python was eventually chosen for it's iterative speed and surprising performance.
 
-Due to Steamworks (Valve's API for communicating with Steam as a service) are in C++, we also created a bridge between Python and Steamworks which is available in the `pysteam` directory.
+Due to Steamworks (Valve's API for communicating with Steam as a service) being in C++, we also created a bridge between Python and Steamworks which is available in the `pysteam` directory.
 
 ## Where are the Assets?
 
