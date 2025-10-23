@@ -2,6 +2,8 @@
 ashes/__pycache__
 ashes/systems/__pycache__
 pysteam/build
+build/
+dist/
 
 .dll
 .pdb

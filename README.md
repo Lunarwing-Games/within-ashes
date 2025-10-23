@@ -6,11 +6,9 @@
 
 You can choose where to survive, when the game first starts. Some areas are harder than others and have differing benefits overall.
 
-## Why Python?
+## Why C++
 
-Python is performant, if done properly. This game is by no means of massive scale, and is in no way graphically intensive. Python also allows for extremely rapid development and iteration, our only downtime comes when building executables via `pyinstaller`. While C++ and other languages were considered for the full game, Python was eventually chosen for it's iterative speed and surprising performance.
-
-Due to Steamworks (Valve's API for communicating with Steam as a service) being in C++, we also created a bridge between Python and Steamworks which is available in the `pysteam` directory.
+C++ is *the* industry standard for high-performance programming. Early commits show this project being built in Python, however due to complexities in how Python's Pygame-CE handles OpenGL/SDL and how Steamworks handle it, all the original source code was removed and being re-written for C++ once again. Keeping everything unified is the better move overall despite the slowdown in iteration.
 
 ## Where are the Assets?
 
