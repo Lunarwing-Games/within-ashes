@@ -1,5 +1,4 @@
 #include <raylib.h>
-#include <steam/steam_api.h>
 #include <string>
 
 int main(void)
@@ -17,8 +16,8 @@ int main(void)
     {
         BeginDrawing();
             ClearBackground(RAYWHITE);
-            DrawText("Test", 0, 0, 20, BLACK);
-            DrawFPS(0, 16);
+            DrawText("WA Test 01", 128, 0, 20, BLACK);
+            DrawFPS(0, 0);
         EndDrawing();
     }
 
