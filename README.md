@@ -1,6 +1,6 @@
 # Within Ashes
 
-![Static Badge](https://img.shields.io/badge/Built_with-Python-blue?logo=python&logoColor=%23FFFFFF)
+![Static Badge](https://img.shields.io/badge/Built_with-C%2B%2B-pink?logo=cplusplus&logoColor=%23FFFFFF)
 
 *Within Ashes* is a surivial roguelike with aspects of resource management. The main goal is to explore the area you're in and survive as long as possible while staying sane, healthy, and in one piece. *Within Ashes* takes place in a partially reclaimed city, in the future after some catastrophic event lead to the destruction of the city. Within the boundaries of this former city you can find an array of buildings to freely explore for resources to keep yourself alive and defended.
 
